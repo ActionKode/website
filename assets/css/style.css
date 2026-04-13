@@ -1,0 +1,413 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Header ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #2d2c2c;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+header > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+header img {
+  max-width: 300px;
+  height: 100%;
+  object-fit: contain;
+}
+
+#header-links {
+  float: right;
+  height: 44px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+#header-links a {
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 100%;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 0 13px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#header-links a:hover,
+#header-links a.active {
+  background-color: #fff;
+  color: #000;
+}
+
+@media (max-width: 523px) {
+  header > a img { display: none; }
+  #header-links {
+    width: 100%;
+    justify-content: center;
+  }
+  #header-links a {
+    flex: 1;
+    justify-content: center;
+    font-size: 90%;
+    padding: 0 6px;
+  }
+}
+
+/* ── Footer ── */
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+footer img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+footer a:hover img { opacity: 1; }
+
+/* ── Home ── */
+#biglogo {
+  width: 95%;
+  height: auto;
+  padding: 0 2.5%;
+  display: block;
+  margin: 0 auto;
+}
+
+#about {
+  margin-top: 40px;
+}
+
+#about h1 {
+  text-align: center;
+}
+
+#abouttext {
+  background-color: #2d2c2c;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 12px 20px;
+  border-radius: 6px;
+}
+
+/* ── Page header ── */
+.page-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* ── Projects grid ── */
+#projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #2d2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: #fff;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.08);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-card-placeholder {
+  width: 100%;
+  height: 180px;
+  background-color: #1a1a1a;
+}
+
+.project-card-info {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-card-info h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.project-card-info p {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.post-count {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ── Project page ── */
+.project-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.project-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.project-hero {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.project-header h1 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+}
+
+.project-description {
+  color: #aaa;
+  margin: 0 0 20px;
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-link-btn {
+  background-color: #2d2c2c;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.project-link-btn:hover {
+  background-color: #444;
+}
+
+.project-body {
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* ── Related posts / blog list ── */
+.related-posts {
+  margin-top: 48px;
+  border-top: 1px solid #2d2c2c;
+  padding-top: 24px;
+}
+
+.related-posts h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-list.full {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.post-item > a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #2d2c2c;
+  border-radius: 6px;
+  padding: 14px 18px;
+  transition: background-color 0.15s;
+}
+
+.post-item > a:hover {
+  background-color: #3a3939;
+}
+
+.post-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.post-title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.post-date {
+  color: #888;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.post-excerpt {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── Tags ── */
+.post-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #444;
+  color: #ddd;
+  font-size: 0.78rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+a.tag:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ── Post page ── */
+.post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.post-header {
+  margin-bottom: 32px;
+  border-bottom: 1px solid #2d2c2c;
+  padding-bottom: 20px;
+}
+
+.post-header h1 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.post-content {
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.post-content h2,
+.post-content h3 { color: #fff; }
+
+.post-content code {
+  background-color: #1a1a1a;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  background-color: #1a1a1a;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.post-content img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.post-back {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #2d2c2c;
+}
+
+.post-back a {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.post-back a:hover { color: #fff; }

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Usage:
+#   ./new post "My Post Title"
+#   ./new project "My Project"
+
+set -e
+
+type="$1"
+title="$2"
+
+if [[ -z "$type" || -z "$title" ]]; then
+  echo "Usage: ./new [post|project] \"Title\""
+  exit 1
+fi
+
+# Turn "My Post Title" into "my-post-title"
+slug=$(echo "$title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
+
+case "$type" in
+  post)
+    date=$(date +%Y-%m-%d)
+    file="_posts/${date}-${slug}.md"
+    cat > "$file" <<EOF
+---
+title: "$title"
+date: $date
+tags: []
+---
+
+Write your post here.
+EOF
+    echo "Created: $file"
+    ;;
+
+  project)
+    file="_projects/${slug}.md"
+    cat > "$file" <<EOF
+---
+title: "$title"
+description: "A short description of $title."
+tag: $slug
+# image: /assets/img/${slug}-thumb.jpg
+# links:
+#   - label: Play Now
+#     url: /link/here
+---
+
+Write your project description here.
+EOF
+    echo "Created: $file"
+    ;;
+
+  *)
+    echo "Unknown type '$type'. Use 'post' or 'project'."
+    exit 1
+    ;;
+esac

@@ -1,0 +1,26 @@
+title: Actionkode Games
+description: An indie video game studio
+baseurl: ""
+url: "https://actionkode.github.io"
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+plugins:
+  - jekyll-feed
+
+markdown: kramdown
